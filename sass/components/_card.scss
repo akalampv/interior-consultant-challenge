@@ -1,0 +1,53 @@
+.main__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 40rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0 4rem;
+  background-color: $color-background;
+  padding: 2rem;
+  transform: translateY(50%);
+
+  &--description {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3rem;
+
+    &-img {
+      width: 4.5rem;
+      height: 4.5rem;
+      border-radius: 50%;
+      margin-right: 2rem;
+    }
+
+    &-text {
+
+
+      & > h3 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-size: 1.4rem;
+        line-height: 1.7rem;
+      }
+
+      & > p {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+        color: $color-grey-2;
+      }
+    }
+  }
+
+  &--heading {
+    font-family: "Lora", serif;
+    font-weight: 700;
+    font-size: 2.4rem;
+    line-height: 3.1rem;
+  }
+}

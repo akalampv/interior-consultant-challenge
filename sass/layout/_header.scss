@@ -1,0 +1,196 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15rem;
+
+  @media only screen and (max-width: $bp-medium) {
+    margin-bottom: 10rem;
+  }
+
+  &__logo {
+    font-family: "Crimson Pro", serif;
+    font-size: 1.4rem;
+    font-weight: 200;
+    line-height: 1.6rem;
+    text-transform: uppercase;
+    border: 1px solid $color-white;
+    border-radius: 3px;
+    padding: 1rem;
+  }
+
+  &__nav {
+    transition: all .8s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+
+    @media only screen and (max-width: $bp-medium) {
+      opacity: 0;
+      width: 0;
+      visibility: hidden;
+      position: fixed;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      z-index: 2;
+    }
+  }
+
+  &__nav-list {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    list-style: none;
+
+    display: flex;
+    align-items: center;
+
+    @media only screen and (max-width: $bp-medium) {
+      flex-direction: column;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      font-size: 4.8rem;
+    }
+  }
+
+  &__nav-item {
+    &:first-child {
+      font-weight: 700;
+    }
+
+    &:not(:last-child) {
+      margin-right: 8rem;
+
+      @media only screen and (max-width: $bp-medium) {
+        margin-right: 0;
+        margin-bottom: 4rem;
+      }
+    }
+  }
+
+  &__nav-link:link,
+  &__nav-link:visited {
+    text-decoration: none;
+    color: $color-white;
+    display: inline-block;
+    padding: 1rem;
+
+    @media only screen and (max-width: $bp-medium) {
+      background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
+      background-size: 230%;
+      transition: all .4s;
+      padding: 3rem 6rem;
+      display: inline-block;
+    }
+
+    &:hover,
+    &:active {
+      background-position: 100%;
+      color: $color-background;
+      transform: translateX(1rem);
+    }
+  }
+
+  &__checkbox {
+    display: none;
+  }
+
+  &__button {
+    width: 5rem;
+    height: 5rem;
+    position: fixed;
+    top: 4rem;
+    right: 7rem;
+    border-radius: 50%;
+    z-index: 3;
+    visibility: hidden;
+    background-color: $color-white;
+    cursor: pointer;
+
+    @media only screen and (max-width: $bp-medium) {
+      visibility: visible;
+    }
+  }
+
+  &__background {
+    width: 4rem;
+    height: 4rem;
+    position: fixed;
+    top: 4.5rem;
+    right: 7.5rem;
+    border-radius: 50%;
+    z-index: 1;
+    background-image: radial-gradient($color-background-light, $color-background);
+    visibility: hidden;
+    transition: transform .8s cubic-bezier(0.85, 0, 0.15, 1);
+
+    @media only screen and (max-width: $bp-medium) {
+      visibility: visible;
+    }
+  }
+
+  &__icon {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &,
+    &::before,
+    &::after {
+      display: inline-block;
+      width: 3rem;
+      height: 3px;
+      background-color: $color-background;
+      position: absolute;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      transition: all .2s;
+      left: 0;
+    }
+
+    &::before {
+      top: -.8rem;
+    }
+
+    &::after {
+      top: .8rem;
+    }
+  }
+
+  &__button:hover &__icon::before {
+    top: -1rem;
+  }
+
+  &__button:hover &__icon::after {
+    top: 1rem;
+  }
+
+  &__checkbox:checked ~ &__background {
+    transform: scale(80);
+  }
+
+  &__checkbox:checked ~ &__nav {
+    opacity: 1;
+    width: 100%;
+    visibility: visible;
+  }
+
+  &__checkbox:checked ~ &__button &__icon {
+    background-color: transparent;
+  }
+
+  &__checkbox:checked ~ &__button &__icon::before {
+    top: 0;
+    transform: rotate(135deg);
+  }
+
+  &__checkbox:checked ~ &__button &__icon::after {
+    top: 0;
+    transform: rotate(-135deg);
+  }
+}
